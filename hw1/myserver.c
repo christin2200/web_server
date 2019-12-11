@@ -36,7 +36,15 @@ void write_to_file_until(char *message, char *end, FILE *fp)
 
     *p_buffer = '\0';
     //printf("abuffer %s\n", abuffer);
-    fwrite(abuffer, sizeof(char), strlen(abuffer), fp);
+    int j = 0;
+    while(j<strlen(abuffer))
+    {
+        fprintf(fp, "%c", abuffer[j]);
+        j++;
+
+    }
+
+    //fwrite(abuffer, sizeof(char), strlen(abuffer), fp);
 }
 
 
@@ -109,7 +117,15 @@ int main(int argc, char *argv[])
 
             //讀取瀏覽器要求
             long valread = read( new_socket , buffer, sizeof(buffer));
-            printf("%s\n",buffer );
+            int k = 0;
+            while(k<sizeof(buffer))
+            {
+                printf("%c",buffer[k] );
+                k++;
+
+            }
+
+
             strcpy(buffer2, buffer);
 
             if (strncmp(buffer,"POST ",4) == 0)
